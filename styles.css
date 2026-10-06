@@ -152,7 +152,7 @@ body.menu-open { overflow: hidden; }
 .scroll-txt { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; font-weight: 600; letter-spacing: .2em; }
 
 /* ---------- Reel (pinned marquee + tilted cards) ---------- */
-.reel { position: relative; height: 320vh; }
+.reel { position: relative; height: 190vh; }
 .reel-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; place-items: center; }
 .reel-track {
   position: absolute; left: 0; top: 50%; transform: translate3d(0, -50%, 0);
@@ -161,13 +161,14 @@ body.menu-open { overflow: hidden; }
   color: #4a4a48;
 }
 .reel-track i { font-style: normal; color: var(--green); font-size: .7em; }
-.reel-cards { position: relative; width: min(440px, 72vw); aspect-ratio: 4 / 5; }
+.reel-cards { position: relative; width: min(820px, 88vw); aspect-ratio: 16 / 10; }
 .reel-card {
   position: absolute; inset: 0; margin: 0; overflow: hidden; border-radius: 6px;
   background: var(--surface); box-shadow: 0 40px 90px -30px rgba(0,0,0,.9);
   will-change: transform; transform: translate3d(0, 120vh, 0) rotate(14deg);
 }
 .reel-card img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.reel-card.reel-toon { inset: -14% 31%; }
 .reel-toon { background: radial-gradient(circle at 50% 40%, #2a6b45, #163a25 70%); }
 .reel-toon img { object-fit: contain; object-position: bottom; padding-top: 6%; }
 
@@ -318,7 +319,8 @@ body.menu-open { overflow: hidden; }
   .cert-grid b { font-size: 16px; }
   .foot { grid-template-columns: 1fr 1fr; }
   .foot-right { text-align: left; }
-  .reel { height: 260vh; }
+  .reel { height: 170vh; }
+  .reel-card.reel-toon { inset: -30% 26%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
