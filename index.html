@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jaime Canalejo</title>
+  <meta name="description" content="Jaime Canalejo Rodríguez — Founding AI Engineer and co-founder of Quetzal, builder of MoneyFlow. Computer Engineering at Universidad de Málaga.">
+  <meta name="theme-color" content="#0c0d0a">
+  <meta property="og:title" content="Jaime Canalejo — Founding AI Engineer">
+  <meta property="og:description" content="Co-founder of Quetzal (social media on autopilot for small businesses) and builder of MoneyFlow. Málaga, Spain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jaimecanalejo.me/">
+  <meta property="og:image" content="https://jaimecanalejo.me/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://jaimecanalejo.me/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    // Pick language before first paint: saved choice > browser language > English
+    (function () {
+      var l = null;
+      try { l = localStorage.getItem('lang'); } catch (e) {}
+      if (!l) l = (navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+      document.documentElement.lang = l;
+    })();
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Jaime Canalejo Rodríguez","alternateName":"Jaime Canalejo",
+   "url":"https://jaimecanalejo.me/","jobTitle":"Founding AI Engineer",
+   "worksFor":{"@type":"Organization","name":"Quetzal","url":"https://quetzaltech.es/"},
+   "alumniOf":[{"@type":"CollegeOrUniversity","name":"Universidad de Málaga"},{"@type":"School","name":"The British School of Málaga"}],
+   "sameAs":["https://www.linkedin.com/in/jaime-canalejo-rodriguez-050bb5270/","https://quetzaltech.es/"],
+   "image":"https://jaimecanalejo.me/assets/jaime.jpg",
+   "address":{"@type":"PostalAddress","addressLocality":"Málaga","addressCountry":"ES"}}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#work"><span class="en">Skip to projects</span><span class="es">Ir a proyectos</span></a>
+
+  <header class="bar">
+    <a href="#hello" class="mark" aria-label="Jaime Canalejo">
+      <span class="mark-dot"></span>jc<span class="dim">.me</span>
+    </a>
+    <nav class="bar-nav" aria-label="Sections">
+      <a href="#about"><span class="en">About</span><span class="es">Sobre mí</span></a>
+      <a href="#work"><span class="en">Work</span><span class="es">Proyectos</span></a>
+      <a href="#path"><span class="en">Path</span><span class="es">Trayectoria</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+    </nav>
+    <div class="bar-right">
+      <span class="bar-clock mono" id="clock" aria-hidden="true">AGP --:--</span>
+      <button class="lang mono" id="lang" type="button" aria-label="Switch language / Cambiar idioma">
+        <span data-l="en">EN</span><span class="sep">/</span><span data-l="es">ES</span>
+      </button>
+    </div>
+  </header>
+
+  <ol class="rail mono" aria-hidden="true">
+    <li><a href="#hello" tabindex="-1">01</a></li>
+    <li><a href="#about" tabindex="-1">02</a></li>
+    <li><a href="#work" tabindex="-1">03</a></li>
+    <li><a href="#path" tabindex="-1">04</a></li>
+    <li><a href="#contact" tabindex="-1">05</a></li>
+  </ol>
+
+  <main id="deck">
+
+    <!-- 01 HELLO -->
+    <section class="slide hero" id="hello">
+      <canvas id="flow" aria-hidden="true"></canvas>
+      <div class="wrap hero-inner">
+        <p class="kicker mono reveal">
+          <span class="pulse"></span>
+          <span class="en">Founding AI Engineer @ Quetzal · Málaga, ES</span>
+          <span class="es">Founding AI Engineer en Quetzal · Málaga</span>
+        </p>
+        <h1 class="hero-name reveal">
+          <span class="line">Jaime</span>
+          <span class="line indent">Canalejo<span class="accent">.</span></span>
+        </h1>
+        <p class="hero-sub reveal">
+          <span class="en">I build AI products that quietly do the work for you — from a small business’s social media on <em>autopilot</em> to money that’s already in the right place.</span>
+          <span class="es">Construyo productos con IA que hacen el trabajo por ti — desde las redes de una pyme en <em>piloto automático</em> hasta un dinero que ya está donde debe.</span>
+        </p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-solid" href="#work"><span class="en">See my work</span><span class="es">Ver proyectos</span> <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-ghost" href="#contact"><span class="en">Get in touch</span><span class="es">Hablemos</span></a>
+        </div>
+      </div>
+      <p class="scroll-hint mono" aria-hidden="true"><span class="en">scroll or use ↑ ↓</span><span class="es">desliza o usa ↑ ↓</span></p>
+    </section>
+
+    <!-- 02 ABOUT -->
+    <section class="slide about" id="about">
+      <div class="wrap grid-2">
+        <div class="about-left">
+          <p class="eyebrow mono"><span class="en">02 — About</span><span class="es">02 — Sobre mí</span></p>
+          <h2 class="title reveal">
+            <span class="en">Engineer.<br>Co-founder.<br>Building in public.</span>
+            <span class="es">Ingeniero.<br>Cofundador.<br>Construyendo en público.</span>
+          </h2>
+          <figure class="portrait reveal">
+            <img src="/assets/jaime.jpg" alt="Jaime Canalejo" width="375" height="697" loading="lazy" onerror="this.parentNode.classList.add('no-img');this.remove()">
+            <span class="portrait-mono" aria-hidden="true">JC</span>
+          </figure>
+        </div>
+        <div class="about-body reveal">
+          <p class="lead">
+            <span class="en">I’m Jaime, 22, a computer engineer from the Universidad de Málaga and co-founder of <strong>Quetzal</strong>.</span>
+            <span class="es">Soy Jaime, tengo 22 años, soy ingeniero informático por la Universidad de Málaga y cofundador de <strong>Quetzal</strong>.</span>
+          </p>
+          <p>
+            <span class="en">With my co-founder I’ve spent months building something very concrete: publishing a small business’s social media without the owner having to write a thing. We saw the same story in every shop — they know they should be posting, but have no time to do it, no budget to pay someone, and the AI tool they open each evening just moves the job somewhere else.</span>
+            <span class="es">Con mi cofundador llevo meses construyendo algo muy concreto: publicar las redes sociales de un negocio pequeño sin que su dueño tenga que escribir nada. Lo veíamos en cada pyme: saben que deberían estar en redes, no tienen tiempo ni presupuesto para que lo haga otro, y la herramienta de IA que abren cada tarde solo les cambia la tarea de sitio.</span>
+          </p>
+          <p>
+            <span class="en">My part is the code — the model that plans, the image and video generation, the publishing and the engine that measures and improves. I share what really happens while building and selling it: what breaks, what it costs, what we measure and what works with a real customer.</span>
+            <span class="es">Mi parte es el código: el modelo que planifica, la generación de imágenes y vídeo, la publicación y el motor que mide y mejora. Cuento lo que pasa de verdad al construirlo y venderlo: lo que se rompe, lo que cuesta, lo que medimos y lo que funciona con un cliente.</span>
+          </p>
+          <dl class="facts">
+            <div><dt class="mono"><span class="en">Based in</span><span class="es">Desde</span></dt><dd>Málaga, España</dd></div>
+            <div><dt class="mono"><span class="en">Role</span><span class="es">Rol</span></dt><dd>Founding AI Engineer</dd></div>
+            <div><dt class="mono"><span class="en">Studies</span><span class="es">Estudios</span></dt><dd><span class="en">Computer Engineering · UMA</span><span class="es">Ing. Informática · UMA</span></dd></div>
+            <div><dt class="mono"><span class="en">Languages</span><span class="es">Idiomas</span></dt><dd><span class="en">Spanish · English (C1)</span><span class="es">Español · Inglés (C1)</span></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 WORK -->
+    <section class="slide work" id="work">
+      <div class="wrap">
+        <div class="work-head">
+          <p class="eyebrow mono"><span class="en">03 — Selected work</span><span class="es">03 — Proyectos</span></p>
+          <h2 class="title reveal"><span class="en">Things I’ve built.</span><span class="es">Lo que he construido.</span></h2>
+        </div>
+
+        <!-- QUETZAL -->
+        <article class="feature reveal">
+          <div class="feature-copy">
+            <div class="tags mono">
+              <span class="tag live">● Live</span>
+              <span class="tag"><span class="en">AI agents</span><span class="es">Agentes IA</span></span>
+              <span class="tag">SaaS</span>
+            </div>
+            <h3 class="feature-title">Quetzal</h3>
+            <p class="feature-tag"><span class="en">Social media on autopilot for small businesses.</span><span class="es">Redes sociales en piloto automático para pymes.</span></p>
+            <p>
+              <span class="en">Quetzal reads a business’s website and brand, writes and designs its posts, schedules them at the hour that works best for that account, publishes them across six networks in eleven languages — and learns from each result so the next one is better. Owners approve with one tap, or leave it on autopilot.</span>
+              <span class="es">Quetzal lee la web y la marca del negocio, escribe y diseña sus publicaciones, las programa a la hora que mejor funciona en su cuenta, las publica en seis redes y once idiomas, y aprende de cada resultado para que la siguiente sea mejor. El dueño aprueba con un toque o lo deja en piloto automático.</span>
+            </p>
+            <ul class="ticks">
+              <li><span class="en">I design and code the system that plans and writes every post</span><span class="es">Diseño y programo el sistema que planifica y escribe cada publicación</span></li>
+              <li><span class="en">Image, carousel and AI-video generation</span><span class="es">Generación de imágenes, carruseles y vídeo con IA</span></li>
+              <li><span class="en">Publishing to each network + the engine that measures and improves</span><span class="es">Publicación en cada red + el motor que mide y mejora</span></li>
+              <li><span class="en">Customer-facing too: if something breaks, I see it and I fix it</span><span class="es">También con clientes: lo que falla lo veo yo y lo arreglo yo</span></li>
+            </ul>
+            <div class="btn-row">
+              <a class="btn btn-solid" href="https://quetzaltech.es/" target="_blank" rel="noopener">quetzaltech.es <span aria-hidden="true">↗</span></a>
+              <a class="btn btn-ghost" href="https://quetzaltech.es/es/demo" target="_blank" rel="noopener"><span class="en">Get a free demo week</span><span class="es">Genera tu semana demo</span> <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <a class="shots" href="https://quetzaltech.es/" target="_blank" rel="noopener" aria-label="Quetzal website, desktop">
+            <figure class="browser">
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">quetzaltech.es</span></div>
+              <img src="/assets/quetzal-desktop.jpg" alt="Quetzal website, desktop" width="1440" height="900" loading="lazy">
+            </figure>
+            <figure class="phone">
+              <img src="/assets/quetzal-mobile.jpg" alt="Quetzal website on mobile" width="780" height="1688" loading="lazy">
+            </figure>
+          </a>
+        </article>
+
+        <!-- MONEYFLOW -->
+        <article class="feature feature-rev reveal">
+          <div class="feature-copy">
+            <div class="tags mono">
+              <span class="tag live">● Live</span>
+              <span class="tag">Fintech</span>
+              <span class="tag"><span class="en">Side project</span><span class="es">Proyecto propio</span></span>
+            </div>
+            <h3 class="feature-title">MoneyFlow</h3>
+            <p class="feature-tag"><span class="en">One card. Clear boundaries.</span><span class="es">Una tarjeta. Límites claros.</span></p>
+            <p>
+              <span class="en">An app to manage your savings: it splits your salary into protected savings and virtual spending envelopes — Food, Restaurants, Wants, Transport — and tells you how much you can spend today. No bank passwords, no real transfers, private by design.</span>
+              <span class="es">Una app para gestionar tus ahorros: reparte tu sueldo entre un ahorro protegido y sobres virtuales de gasto — Comida, Restaurantes, Caprichos, Transporte — y te dice cuánto puedes gastar hoy. Sin contraseñas del banco, sin transferencias reales, privada por diseño.</span>
+            </p>
+            <ul class="ticks">
+              <li><span class="en">Virtual envelopes instead of extra bank accounts</span><span class="es">Sobres virtuales en lugar de más cuentas bancarias</span></li>
+              <li><span class="en">Automatic daily spending limit</span><span class="es">Límite de gasto diario automático</span></li>
+              <li><span class="en">Real-time balance per category</span><span class="es">Saldo en tiempo real por categoría</span></li>
+            </ul>
+            <div class="btn-row">
+              <a class="btn btn-solid" href="https://moneyflow-ten-rho.vercel.app/" target="_blank" rel="noopener"><span class="en">Open the app</span><span class="es">Abrir la app</span> <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <a class="shots" href="https://moneyflow-ten-rho.vercel.app/" target="_blank" rel="noopener" aria-label="MoneyFlow website, desktop">
+            <figure class="browser">
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">moneyflow-ten-rho.vercel.app</span></div>
+              <img src="/assets/moneyflow-desktop.jpg" alt="MoneyFlow website, desktop" width="1440" height="900" loading="lazy">
+            </figure>
+            <figure class="phone">
+              <img src="/assets/moneyflow-mobile.jpg" alt="MoneyFlow envelopes on mobile" width="780" height="1688" loading="lazy">
+            </figure>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- 04 PATH -->
+    <section class="slide path" id="path">
+      <div class="wrap path-grid">
+        <div class="path-head">
+          <p class="eyebrow mono"><span class="en">04 — Path</span><span class="es">04 — Trayectoria</span></p>
+          <h2 class="title reveal"><span class="en">Where I’ve been.</span><span class="es">De dónde vengo.</span></h2>
+
+          <div class="side-block reveal">
+            <h3 class="mono side-h"><span class="en">Toolbox</span><span class="es">Herramientas</span></h3>
+            <ul class="chips">
+              <li><span class="en">AI automation</span><span class="es">Automatización con IA</span></li>
+              <li><span class="en">AI agents</span><span class="es">Agentes inteligentes</span></li>
+              <li><span class="en">Artificial intelligence</span><span class="es">Inteligencia artificial</span></li>
+              <li>Python</li>
+              <li>SQL</li>
+              <li><span class="en">Networks &amp; systems</span><span class="es">Redes y sistemas</span></li>
+              <li>VMware</li>
+              <li><span class="en">IT infrastructure</span><span class="es">Infraestructura IT</span></li>
+            </ul>
+          </div>
+
+          <div class="side-block reveal">
+            <h3 class="mono side-h"><span class="en">Certificates &amp; courses</span><span class="es">Certificados y cursos</span></h3>
+            <ul class="mini-list">
+              <li><strong>C1 English Certificate</strong><span>University of Cambridge · 2022</span></li>
+              <li><strong>Curso SQL Total</strong><span><span class="en">Advanced databases</span><span class="es">Bases de datos avanzado</span></span></li>
+              <li><strong>Evolve into Ecommerce</strong><span>Evolve Academy</span></li>
+              <li><strong>AstroFx Forex Trading</strong><span><span class="en">Markets &amp; trading</span><span class="es">Mercados y trading</span></span></li>
+              <li><strong>Python</strong><span><span class="en">Self-taught</span><span class="es">Formación autodidacta</span></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <ol class="timeline">
+          <li class="reveal now">
+            <span class="when mono"><span class="en">Aug 2026 — Now</span><span class="es">Ago 2026 — Hoy</span></span>
+            <div>
+              <h3>Founding AI Engineer · <a href="https://quetzaltech.es/" target="_blank" rel="noopener">Quetzal</a></h3>
+              <p class="where mono"><span class="en">Co-founder · Full-time · Málaga</span><span class="es">Cofundador · Jornada completa · Málaga</span></p>
+              <p><span class="en">The product’s engineer: I design and build the system that plans and writes each post, image and video generation, publishing on every network, and the engine that measures results and improves with them. I also work directly with clients.</span><span class="es">Soy el ingeniero del producto: diseño y programo el sistema que planifica y escribe cada publicación, la generación de imágenes y vídeo, la publicación en cada red y el motor que mide los resultados y mejora con ellos. Trabajo también con los clientes.</span></p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="when mono"><span class="en">Feb — May 2026</span><span class="es">Feb — May 2026</span></span>
+            <div>
+              <h3><span class="en">Networks &amp; Systems Intern</span><span class="es">Becario de Redes y Sistemas</span> · ASAC</h3>
+              <p class="where mono"><span class="en">Internship · On-site · Málaga</span><span class="es">Prácticas · Presencial · Málaga</span></p>
+              <p><span class="en">Part of the technical team managing and maintaining IT infrastructure: network monitoring and administration, OS and hardware setup, third-level incident resolution and user support, backups and perimeter security, and documentation of processes and asset inventory.</span><span class="es">Parte del equipo técnico en la gestión y mantenimiento de infraestructuras IT: monitorización y administración de redes, instalación y mantenimiento de sistemas y hardware, incidencias de tercer nivel y soporte, copias de seguridad y seguridad perimetral, y documentación de procesos e inventario.</span></p>
+            </div>
+          </li>
+          <li class="reveal edu">
+            <span class="when mono">2022 — 2026</span>
+            <div>
+              <h3>Universidad de Málaga</h3>
+              <p class="where mono"><span class="en">BSc Computer Engineering · Information Systems</span><span class="es">Grado en Ingeniería Informática · Sistemas de Información</span></p>
+            </div>
+          </li>
+          <li class="reveal edu">
+            <span class="when mono">2007 — 2022</span>
+            <div>
+              <h3>The British School of Málaga</h3>
+              <p class="where mono">IGCSEs · A-Levels · <span class="en">Grade</span><span class="es">Nota</span> 13.4</p>
+              <p><span class="en">Physics, Maths, Business, Further Maths.</span><span class="es">Física, Matemáticas, Business, Matemáticas II.</span></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 05 CONTACT -->
+    <section class="slide contact" id="contact">
+      <div class="wrap contact-inner">
+        <p class="eyebrow mono"><span class="en">05 — Contact</span><span class="es">05 — Contacto</span></p>
+        <h2 class="contact-big reveal">
+          <span class="en">Let’s build<br>something <span class="accent-text">together</span>.</span>
+          <span class="es">Construyamos<br>algo <span class="accent-text">juntos</span>.</span>
+        </h2>
+        <p class="contact-sub reveal">
+          <span class="en">Running a small business and tired of posting? Hiring an engineer who ships? Or just want to talk AI — my inbox is open.</span>
+          <span class="es">¿Tienes un negocio y estás cansado de publicar? ¿Buscas un ingeniero que entregue? ¿O solo quieres hablar de IA? Escríbeme.</span>
+        </p>
+        <div class="contact-links reveal">
+          <a class="clink" href="https://www.linkedin.com/in/jaime-canalejo-rodriguez-050bb5270/" target="_blank" rel="noopener" id="linkedinLink">
+            <span class="mono">LinkedIn</span><span>Jaime Canalejo Rodríguez</span><span aria-hidden="true">↗</span>
+          </a>
+          <a class="clink" href="https://quetzaltech.es/es/demo" target="_blank" rel="noopener">
+            <span class="mono">Quetzal</span><span><span class="en">Free demo week for your business</span><span class="es">Semana demo gratis para tu negocio</span></span><span aria-hidden="true">↗</span>
+          </a>
+          <a class="clink" href="https://moneyflow-ten-rho.vercel.app/" target="_blank" rel="noopener">
+            <span class="mono">MoneyFlow</span><span><span class="en">Try the savings app</span><span class="es">Prueba la app de ahorro</span></span><span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <footer class="foot mono">
+          <span>© <span id="year">2026</span> Jaime Canalejo Rodríguez</span>
+          <span><span class="en">Made in Málaga</span><span class="es">Hecho en Málaga</span></span>
+          <a href="#hello"><span class="en">Back to top</span><span class="es">Volver arriba</span> ↑</a>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

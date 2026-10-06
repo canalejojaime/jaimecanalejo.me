@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jaimecanalejo.me/sitemap.xml
