@@ -115,6 +115,16 @@
     renderReel();
   }
 
+  /* ---------- Cartoon leans toward the cursor ---------- */
+  var toon = document.getElementById('toon');
+  if (toon && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('mousemove', function (e) {
+      var x = (e.clientX / window.innerWidth - 0.5) * 2;
+      var y = (e.clientY / window.innerHeight - 0.5) * 2;
+      toon.style.transform = 'rotateY(' + (x * 10).toFixed(2) + 'deg) rotateX(' + (-y * 4).toFixed(2) + 'deg)';
+    }, { passive: true });
+  }
+
   /* ---------- CTA button follows the cursor a little ---------- */
   if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('.cta-btn').forEach(function (btn) {
