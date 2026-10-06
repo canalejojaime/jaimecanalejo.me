@@ -84,7 +84,7 @@
   var reel = document.getElementById('reel');
   var track = document.getElementById('reelTrack');
   var cards = Array.prototype.slice.call(document.querySelectorAll('.reel-card'));
-  var tilts = [-6, 4, -3];
+  var tilts = [-5, 3, -2];
 
   function renderReel() {
     var r = reel.getBoundingClientRect();
