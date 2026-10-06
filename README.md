@@ -5,7 +5,7 @@ Personal site of Jaime Canalejo Rodríguez. Plain static HTML/CSS/JS — no buil
 ```
 index.html        all content (English + Spanish side by side: <span class="en"> / <span class="es">)
 styles.css        design tokens at the top (colors, fonts)
-main.js           EN/ES toggle, slide nav, hero animation, Quetzal + MoneyFlow demos
+main.js           EN/ES toggle, overlay menu, scroll reel, accordion, counters
 assets/           favicon.svg, og.png (link preview); drop your photo here as jaime.jpg
 404.html, robots.txt, sitemap.xml, vercel.json
 ```

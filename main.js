@@ -2,137 +2,129 @@
   'use strict';
 
   var root = document.documentElement;
+  var body = document.body;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var lang = function () { return root.lang === 'es' ? 'es' : 'en'; };
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+
+  document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- Language toggle ---------- */
-  var langListeners = [];
   document.getElementById('lang').addEventListener('click', function () {
-    root.lang = lang() === 'es' ? 'en' : 'es';
+    root.lang = root.lang === 'es' ? 'en' : 'es';
     try { localStorage.setItem('lang', root.lang); } catch (e) {}
-    langListeners.forEach(function (fn) { fn(); });
   });
 
-  /* ---------- Footer year + Málaga clock ---------- */
-  document.getElementById('year').textContent = new Date().getFullYear();
-  var clock = document.getElementById('clock');
-  function tick() {
-    try {
-      var t = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' }).format(new Date());
-      clock.textContent = 'AGP ' + t;
-    } catch (e) { clock.textContent = 'AGP'; }
+  /* ---------- Overlay menu ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var menu = document.getElementById('menu');
+  var menuLinks = menu.querySelectorAll('a');
+  function setMenu(open) {
+    body.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuLinks.forEach(function (a) { a.tabIndex = open ? 0 : -1; });
+    if (open) menuLinks[0].focus();
   }
-  tick(); setInterval(tick, 15000);
+  setMenu(false);
+  menuBtn.addEventListener('click', function () { setMenu(!body.classList.contains('menu-open')); });
+  menuLinks.forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && body.classList.contains('menu-open')) { setMenu(false); menuBtn.focus(); }
+  });
 
-  /* ---------- Reveal on scroll ---------- */
-  var reveals = document.querySelectorAll('.reveal');
+  /* ---------- Fade-up + divider draw ---------- */
+  var animated = document.querySelectorAll('.fade, .divider');
   if ('IntersectionObserver' in window && !reduceMotion) {
-    var ro = new IntersectionObserver(function (entries) {
+    var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(function (el) { ro.observe(el); });
+    animated.forEach(function (el) { io.observe(el); });
   } else {
-    reveals.forEach(function (el) { el.classList.add('in'); });
+    animated.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- Active section: nav + rail ---------- */
-  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var navLinks = document.querySelectorAll('.bar-nav a, .rail a');
-  var current = 0;
-  function setActive(id) {
-    navLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + id); });
-    document.body.classList.toggle('on-light', id === 'contact');
-  }
-  if ('IntersectionObserver' in window) {
-    var so = new IntersectionObserver(function (entries) {
+  /* ---------- Stat counters ---------- */
+  var counters = document.querySelectorAll('.count');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var co = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          current = slides.indexOf(e.target);
-          setActive(e.target.id);
-        }
+        if (!e.isIntersecting) return;
+        co.unobserve(e.target);
+        var el = e.target, to = Number(el.dataset.to), t0 = performance.now(), dur = 1400;
+        (function step(now) {
+          var k = clamp((now - t0) / dur, 0, 1);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) requestAnimationFrame(step);
+        })(t0);
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    slides.forEach(function (s) { so.observe(s); });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { c.textContent = '0'; co.observe(c); });
   }
 
-  /* ---------- Keyboard slide navigation ---------- */
-  document.addEventListener('keydown', function (e) {
-    var tag = (e.target.tagName || '').toLowerCase();
-    if (tag === 'input' || tag === 'textarea' || e.metaKey || e.ctrlKey || e.altKey) return;
-    var dir = 0;
-    if (e.key === 'ArrowDown' || e.key === 'PageDown') dir = 1;
-    if (e.key === 'ArrowUp' || e.key === 'PageUp') dir = -1;
-    if (!dir) return;
-    var next = slides[Math.max(0, Math.min(slides.length - 1, current + dir))];
-    // Let tall slides scroll naturally until their edge is reached
-    var r = slides[current].getBoundingClientRect();
-    if (dir === 1 && r.bottom > window.innerHeight + 4) return;
-    if (dir === -1 && r.top < -4) return;
-    e.preventDefault();
-    next.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  /* ---------- Services accordion ---------- */
+  var accItems = document.querySelectorAll('#acc li');
+  accItems.forEach(function (li) {
+    li.querySelector('button').addEventListener('click', function () {
+      var wasOpen = li.classList.contains('open');
+      accItems.forEach(function (o) {
+        o.classList.remove('open');
+        o.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        li.classList.add('open');
+        li.querySelector('button').setAttribute('aria-expanded', 'true');
+      }
+    });
   });
 
-  /* ---------- Hero flow field ---------- */
-  var canvas = document.getElementById('flow');
-  var ctx = canvas.getContext('2d');
-  var W = 0, H = 0, dpr = 1, lines = [], t = 0, running = true;
+  /* ---------- Pinned reel: marquee slides, cards drop in tilted ---------- */
+  var reel = document.getElementById('reel');
+  var track = document.getElementById('reelTrack');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.reel-card'));
+  var tilts = [-7, 6, -4, 8];
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = canvas.clientWidth; H = canvas.clientHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = W < 700 ? 16 : 28;
-    lines = [];
-    for (var i = 0; i < n; i++) {
-      lines.push({
-        y: H * (0.18 + 0.7 * (i / n)),
-        amp: 18 + Math.random() * 46,
-        freq: 0.0025 + Math.random() * 0.003,
-        speed: 0.25 + Math.random() * 0.5,
-        phase: Math.random() * Math.PI * 2,
-        hot: i % 7 === 3
+  function renderReel() {
+    var r = reel.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var p = clamp(-r.top / (r.height - vh), 0, 1);
+    var travel = track.scrollWidth - window.innerWidth * 0.5;
+    track.style.transform = 'translate3d(' + (window.innerWidth * 0.15 - p * travel) + 'px,-50%,0)';
+    cards.forEach(function (card, i) {
+      var t = clamp((p + 0.12 - i * 0.22) / 0.2, 0, 1);
+      var e = 1 - Math.pow(1 - t, 3);
+      var y = (1 - e) * vh * 1.1;
+      var rot = tilts[i] + (1 - e) * 22;
+      card.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) rotate(' + rot.toFixed(2) + 'deg)';
+    });
+  }
+
+  if (reduceMotion) {
+    cards.forEach(function (card, i) { card.style.transform = 'rotate(' + tilts[i] + 'deg)'; });
+  } else {
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { renderReel(); ticking = false; });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    renderReel();
+  }
+
+  /* ---------- CTA button follows the cursor a little ---------- */
+  if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.cta-btn').forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var b = btn.getBoundingClientRect();
+        var x = (e.clientX - b.left - b.width / 2) * 0.35;
+        var y = (e.clientY - b.top - b.height / 2) * 0.35;
+        btn.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(1.1)';
       });
-    }
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+    });
   }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    for (var i = 0; i < lines.length; i++) {
-      var L = lines[i];
-      ctx.beginPath();
-      for (var x = -10; x <= W + 10; x += 12) {
-        var y = L.y
-          + Math.sin(x * L.freq + t * L.speed + L.phase) * L.amp
-          + Math.sin(x * L.freq * 2.3 - t * 0.6 + i) * (L.amp * 0.35);
-        if (x === -10) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-      }
-      ctx.strokeStyle = L.hot ? 'rgba(200,241,53,0.55)' : 'rgba(237,236,228,0.07)';
-      ctx.lineWidth = L.hot ? 1.4 : 1;
-      ctx.stroke();
-    }
-  }
-
-  function loop() {
-    if (!running) return;
-    t += 0.012;
-    draw();
-    requestAnimationFrame(loop);
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-  if (reduceMotion) { draw(); }
-  else {
-    // Pause the animation when the hero is off-screen
-    new IntersectionObserver(function (entries) {
-      var vis = entries[0].isIntersecting;
-      if (vis && !running) { running = true; loop(); }
-      if (!vis) running = false;
-    }).observe(canvas);
-    loop();
-  }
-
 })();
