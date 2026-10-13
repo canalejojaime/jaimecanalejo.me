@@ -84,7 +84,8 @@
   var reel = document.getElementById('reel');
   var track = document.getElementById('reelTrack');
   var cards = Array.prototype.slice.call(document.querySelectorAll('.reel-card'));
-  var tilts = [-5, 3, -2];
+  var tilts = [-5, 3, -2, 2];
+  var cardStep = Math.min(0.3, 0.6 / Math.max(cards.length - 1, 1));
 
   function renderReel() {
     var r = reel.getBoundingClientRect();
@@ -93,7 +94,7 @@
     var travel = track.scrollWidth - window.innerWidth * 0.5;
     track.style.transform = 'translate3d(' + (window.innerWidth * 0.15 - p * travel) + 'px,-50%,0)';
     cards.forEach(function (card, i) {
-      var t = clamp((p + 0.2 - i * 0.3) / 0.28, 0, 1);
+      var t = clamp((p + 0.2 - i * cardStep) / 0.28, 0, 1);
       var e = 1 - Math.pow(1 - t, 3);
       var y = (1 - e) * vh * 1.1;
       var rot = tilts[i] + (1 - e) * 22;
